@@ -1,3 +1,0 @@
-Easyling Users Manual
-=====================
-
