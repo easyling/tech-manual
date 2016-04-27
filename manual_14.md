@@ -1,7 +1,7 @@
 Advanced capabilities
 ---------------------
 
-# test title
+# test title 2
 
 Easyling offers an ever-expanding host of advanced features with far-reaching impacts.
 
