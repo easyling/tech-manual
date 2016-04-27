@@ -7,3 +7,8 @@ At project creation, Easyling will attempt to determine the canonical hostname. 
 If the initial `HEAD` request fails (socket timeout or more than five redirections), Easyling will consider the domain invalid, and the project will not be created. This behavior can be overridden at creation-time by opening the Advanced Options and unselecting the "Check for redirections" checkbox - if done, Easyling will create the `Project` entity without any initial pages, which must be added by hand using the Add pages function.
 
 ## Advanced project options
+
+Certain attributes of the `Project` entity can be pre-loaded at creation:
+- Exclusion prefixes
+- Prefix masks
+- Custom SRX file (can be uploaded only at creation time!)
