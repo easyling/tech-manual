@@ -1,9 +1,9 @@
 Collaboration
 -------------
 
-Easyling offers a multiuser environment for editing your translations. Thanks to Google’s infrastructure, any number of users can work on a single project simultaneously. These users can be assigned specific roles, and with these roles, certain powers that limit their access to Easyling.
+Easyling offers a multiuser environment for editing your translations. Thanks to Google’s infrastructure, any number of users can work on a single project simultaneously. These users can be assigned specific roles, and with these roles, certain powers that limit their access to the Proxy Application.
 
-The translation workflow in Easyling is split into a maximum of four steps: Translation (marked by a T and the color yellow), two steps of Proofreading (first and second marked by a P and Q, and the colors cyan and violet, respectively), and Client approval (marked by the letter C and the color aqua). Any user may be assigned any combination of these steps, useful for restricting access to entries in the Workbench.
+The translation workflow in the Proxy Application is split into a maximum of four steps: Translation (marked by a T and the color yellow), two steps of Proofreading (first and second marked by a P and Q, and the colors cyan and violet, respectively), and Client approval (marked by the letter C and the color aqua). Any user may be assigned any combination of these steps, useful for restricting access to entries in the Workbench.
 
 Every project has an owner, who has unlimited powers over the project: the owner may add or remove anyone on the project, edit any entry in any language, including adding new languages, and change any setting, including the advanced ones. There can only be one owner on a project, but owners may renounce ownership, designating another user and setting their own privileges.
 
@@ -11,7 +11,7 @@ Every project has an owner, who has unlimited powers over the project: the owner
 
 *Contributors* are the default users, capable of editing any entry in their selected language and workflow step, but are prevented from doing anything else on the project. They may receive notification emails and project update emails, but they may not edit their features, nor invite anyone else, nor access any of the advanced settings.
 
-*Customers* are a special user class, who are given the ability to manage source segments. By default, Easyling marks all newly discovered segments as “Approved” (as opposed to “Pending” or “Excluded”), which means they are available for translation right away. The setting can be changed under the Advanced Settings menu so newly discovered segments are marked differently, and are not available for translation right away. These pending segments can be managed by the *Customer* role to be approved or excluded entirely, deciding whether or not they are to be translated. Note that the *Customer* needs access to at least one target language and a workflow step to be able to enter the Workbench to select and modify the pending segments!
+*Customers* are a special user class, who are given the ability to manage source segments. By default, the Proxy Application marks all newly discovered segments as “Approved” (as opposed to “Pending” or “Excluded”), which means they are available for translation right away. The setting can be changed under the Advanced Settings menu so newly discovered segments are marked differently, and are not available for translation right away. These pending segments can be managed by the *Customer* role to be approved or excluded entirely, deciding whether or not they are to be translated. Note that the *Customer* needs access to at least one target language and a workflow step to be able to enter the Workbench to select and modify the pending segments!
 
 *Project Managers* are designated by their power to invite others onto the project. Other features and roles can be added as well, but care must be exercised not to include other, conflicting roles, which could re-restrict their access.
 

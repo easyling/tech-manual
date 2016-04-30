@@ -1,7 +1,7 @@
 The Workbench
 -------------
 
-The Workbench is the online editing view of Easyling. It can be used to edit segments, as well as to execute mass operations on large numbers of segments during the proofreading and the publishing phases. The main view of the Workbench is the List View, a simple two-up listing of all the content on the page, the secondary is the Highlight View, which renders the page as-is and allows in-context editing of its contents
+The Workbench is the online editing view of the Proxy Application. It can be used to edit segments, as well as to execute mass operations on large numbers of segments during the proofreading and the publishing phases. The main view of the Workbench is the List View, a simple two-up listing of all the content on the page, the secondary is the Highlight View, which renders the page as-is and allows in-context editing of its contents
 
 The Workbench is opened using the Pages list: each line in the list reveals a toolbar when hovered over, including the “Translate in Workbench” button, which will load the Workbench for the desired page. Once opened, the Workbench can be navigated to other pages using the Page dropdown in the upper left area. The Page dropdown can be searched to locate specific pages. Also in the header is the target language selector, allowing the user to switch to other target languages, if more than one exists on the project. The page can also be previewed using the Eye Icon.
 
