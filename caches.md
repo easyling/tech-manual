@@ -2,6 +2,8 @@
 
 Easyling operates several caching mechanisms, saving either the source or the target content. All of these are tied to individual project settings, and are not active by default.
 
+## Basic separation
+
 + *Target Cache*: the Target cache is active on the live serving domain, and caches the output of the `Translator`, along with the hash of the source content and the percentage of completed translations. It is used to accelerate page serving time by skipping translation entirely: if the Target cache is on, the entity is loaded at the start of translation, and the source content hash is compared to the hash stored by the entity. If matching, the contents of the entity are written into the response and the `Translator` returns without processing the source content further. If the hashes do not match, translation proceeds as usual, and the resulting target content is written back out into the entity, replacing the previous contents.  
 The Target cache is built or overwritten every time a page is loaded through the proxy on the live serving domain, with a few notable exceptions: the cache is not overwritten if the content served matches the content received (i.e. no processing was done on it), nor are entities larger than the hard-coded maximum entity size (960kb) saved. Furthermore, if a site changes its contents too fast (there are too many cache misses, i.e. the cached content differs from the actual), the Proxy will stop caching the given entity to prevent overusing the database. Should this happen, caches must be cleared manually to restore normal operation and reset the cache miss limit.  
 Since the Target Cache will skip document translation, it will prevent newly-written translations or page modifiers from appearing on the live site until cleared!  
@@ -11,4 +13,9 @@ Unlike the Target cache, this cache is only built during crawling, and ***only**
 
 The cache information for each page can be queried individually by clicking the Cache button on the page’s row. This displays a dialog detailing the currently active caches, when they were generated, and allows the project owner to clear each cache separately for each page (useful for hunting down issues when the translated page doesn’t display a change recently made on the original).
 
-With the 2015 December rollout of the Multicache feature, the Proxy Application has gained the ability to use different caches in different proxy modes. There exists a default cache for both the Target and the Source cache, and the project owner can create up to five named caches for each mode. These caches can be renamed at will, and their contents purged, but *cannot* be deleted.
+## Multicache
+
+With the 2015 December rollout of the Multicache feature, the Proxy Application has gained the ability to use different caches in different proxy modes. There exists a default cache for both the Target and the Source cache, and the project owner can create up to five named caches for Source and Target modes respectively. These caches can be renamed at will, and their contents purged, but *cannot* be deleted.
+
+Each proxy mode can be assigned a different cache, and requests in that mode will be routed to the cache first. If an entity is not found in the Datastore, the request falls through to the source server, and the live content found there will be used.  
+During a crawl, the source cache into which data will be written can be selected on the crawl limit dialog. The target cache, however, will only build itself on a published project, on the live domain!
