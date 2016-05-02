@@ -1,9 +1,6 @@
 # Request Handling
 
-Easyling operates over Google's AppEngine infrastructure, split into frontend and backend modules. Each module encompasses variable numbers of instances, scaling automatically in response to demand.
-
-Frontend instances serve requests from visitors to translated pages (in addition to serving the Dashboard and providing user-facing functionality).  
-Requests are routed to Easyling via the CNAME records created during the publishing process.
+In the Translation Proxy, frontend instances are responsible for serving translated pages. Thanks to AppEngine's quick-reaction scaling, the number of frontend instances aggressively follows (and somewhat predicts) demand, keeping latency low. The general life cycle of a proxy request can be described as follows.
 
 + The incoming requests, based on the domain name, reach the Google Cloud (rerouted via DNS record CNAME, pointing to `ghs.domainverify.net`.
 + Based on the domain name and the deployed Proxy application, AppEngine decides that this specific request should be routed to the Proxy AppEngine deployment.
