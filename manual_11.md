@@ -3,7 +3,13 @@ Collaboration
 
 Easyling offers a multiuser environment for editing your translations. Thanks to Google’s infrastructure, any number of users can work on a single project simultaneously. These users can be assigned specific roles, and with these roles, certain powers that limit their access to the Proxy Application.
 
-The translation workflow in the Proxy Application is split into a maximum of four steps: Translation (marked by a T and the color yellow), two steps of Proofreading (first and second marked by a P and Q, and the colors cyan and violet, respectively), and Client approval (marked by the letter C and the color aqua). Any user may be assigned any combination of these steps, useful for restricting access to entries in the Workbench.
+The translation workflow in the Proxy Application is split into a maximum of four steps:
+- Translation: marked by a `T` and the color yellow
+- Proofreading: marked by a `P` and the color cyan
+- Second Proofreading: marked by a `Q` and the color violet
+- Client approval: marked by the letter `C` and the color aqua
+
+Any user may be assigned any combination of these steps, useful for restricting access to entries in the Workbench.
 
 Every project has an owner, who has unlimited powers over the project: the owner may add or remove anyone on the project, edit any entry in any language, including adding new languages, and change any setting, including the advanced ones. There can only be one owner on a project, but owners may renounce ownership, designating another user and setting their own privileges.
 
@@ -18,4 +24,3 @@ Every project has an owner, who has unlimited powers over the project: the owner
 *Advanced Project Managers* are designated by the eponymous feature. They are given the power to edit languages, as well as any entry in the project, and editing most setting, up to, and including, the URL inclusion-exclusion rules. However, they cannot change segmentation settings, publishing settings, and certain advanced settings.
 
 *Admins* are designated by their *Backup Owner* role. Their powers equal that of project owners, being able to change any setting and entry, adding or removing users, and modifying the language settings.
-
