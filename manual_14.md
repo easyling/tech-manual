@@ -1,7 +1,4 @@
-Advanced capabilities
----------------------
-
-# test title 2
+# Advanced capabilities
 
 Easyling offers an ever-expanding host of advanced features with far-reaching impacts.
 
@@ -9,19 +6,19 @@ Easyling offers an ever-expanding host of advanced features with far-reaching im
 
 *Pattern Matching*: the Proxy Application can be given a regular expression to handle automatically generated text. Once the regular expression is entered and saved, all text matching the designated capture group will be considered translation invariant (i.e. the translation is exactly the same as the source). While existing source segments are not deleted, no new segments matching the capture groups will be added.
 
-*Freeze*: the Proxy Applicationcan be instructed to freeze the project pagelist or translation memory. If the pagelist is frozen, the Proxy Application will not add any more pages when crawling the site (although individual pages can still be forced into the database using the Add Pages dialog from the list); while freezing the translation memory will cause the Proxy Application to stop adding any new source segments, even if the page content changes between recrawls. Since the new segments will be left without translations, they will be allowed to bleed through into the translated site.
+*Freeze*: the Proxy Application can be instructed to freeze the project pagelist or translation memory. If the pagelist is frozen, the Proxy Application will not add any more pages when crawling the site (although individual pages can still be forced into the database using the Add Pages dialog from the list); while freezing the translation memory will cause the Proxy Application to stop adding any new source segments, even if the page content changes between recrawls. Since the new segments will be left without translations, they will be allowed to bleed through into the translated site.
 
 Note that attempting to activate translation memory freezing without activating pagelist freezing would result in an error, therefore it is not permitted: upon such an action, the Proxy Application will take corrective steps automatically, and enable pagelist freezing or disable translation memory freezing as needed to maintain consistency.
 
 If desired, after freezing the page list, the Proxy Application can be configured to treat any further pages as “Excluded” by activating the “Handle unknown pages as externalized” option. This will cause the Proxy Application to bypass translation for any page that is not in the current pagelist, just as if it was manually excluded. Be aware that on a live site, this may result in an SEO penalty (due to duplicate content being detected by the crawler)!
 
-*Group pages*: the Proxy Application can group automatically generated pages together, preventing new pages from being added, but not removing already added pages, and making the grouped pages share a single dictionary, necessitating translation of only one. The pages will be grouped according to the path rules specified in the textbox, one path per line, with a “\*” as the wildcard character. This does not decrease the volume of pages that will be crawled, but it makes project maintenance easier.
+*Group pages*: the Proxy Application can group automatically generated pages together, preventing new pages from being added, but not removing already added pages, and making the grouped pages share a single dictionary, necessitating translation of only one. The pages will be grouped according to the path rules specified in the textbox, one path per line, with a “`\*`” as the wildcard character. This does not decrease the volume of pages that will be crawled, but it makes project maintenance easier.
 
-*JavaScript Translation*: this field, available only on newly created projects, contains the capture group definitions used to extract attribute-value pairs from JavaScript files selected for translation/localization. After entering the capture parameters and re-crawling the site, the Proxy Application will display the selected JavaScript files as translatable pages in the pagelist, from where they can be selected for translation in the List View like regular pages, and any values for the selected attributes will be made available as translatable entries, which are treated identical to regular entries. Entering “ html” (N. B. The switch is separated by a space!) after the path specification will result in the Proxy Application applying its HTML parser to the match instead of a plaintext parser, stripping out HTML markup and only offering the actual content for translation (otherwise, should the match contain markup, the translator must take care not to alter it, or risk breaking the translated site).
+*JavaScript Translation*: this field, available only on newly created projects, contains the capture group definitions used to extract attribute-value pairs from JavaScript files selected for translation/localization. After entering the capture parameters and re-crawling the site, the Proxy Application will display the selected JavaScript files as translatable pages in the pagelist, from where they can be selected for translation in the List View like regular pages, and any values for the selected attributes will be made available as translatable entries, which are treated identical to regular entries. Entering “` html`” (N. B. The switch is separated by a space!) after the path specification will result in the Proxy Application applying its HTML parser to the match instead of a plaintext parser, stripping out HTML markup and only offering the actual content for translation (otherwise, should the match contain markup, the translator must take care not to alter it, or risk breaking the translated site).
 
-If a field of the JSON being parsed contains further JSON data in a stringified form ("key": "{\\"key\\":{\\"key\\":\\"value value value\\"}}"), the path can be passed to a recursive JSON translator by appending “ json” to the path, then extending the path on the next line by adding “.json.”.
+If a field of the JSON being parsed contains further JSON data in a stringified form `("key": "{\\"key\\":{\\"key\\":\\"value value value\\"}}")`, the path can be passed to a recursive JSON translator by appending “` json`” to the path, then extending the path on the next line by adding “`.json.`”.
 
-*XPath Translation*: the Proxy Application is able to translate XML (eXtensible Markup Language) files sent by the remote server, according to the XPath standard of specifying elements of the XML structure. Similar to JavaScript translation, entering the “ html” switch will result in the HTML parser being applied, while no switch will parse the match as plaintext.
+*XPath Translation*: the Proxy Application is able to translate XML (eXtensible Markup Language) files sent by the remote server, according to the XPath standard of specifying elements of the XML structure. Similar to JavaScript translation, entering the “` html`” switch will result in the HTML parser being applied, while no switch will parse the match as plaintext.
 
 *Mark multiple resources as translatable*: using URL prefixes (N.B. this requires fully qualified URL prefixes, including protocol, host, and possibly path structures!), the Proxy Application can enforce dictionaries over multiple resources in a single rule. This is especially useful if the site under translation contains an API (especially CREST APIs) whose responses also require translation, and each endpoint is served on a different path; in this case, entering the root of the API here will automatically capture all responses from that path without having to individually mark them as translatable from the Resources menu.
 
@@ -29,7 +26,7 @@ If a field of the JSON being parsed contains further JSON data in a stringified 
 
 *JavaScript Rewriter*: this automated tool will rewrite JavaScript files passing through the proxy, changing fully qualified URLs (beginning with “http://”, containing a top-level domain, followed by a “/”, and optionally any further URIs) to refer to the proxied domain instead of the original domain, thus preserving the integrity of the translation.
 
-*Ignored* *classes*: if a certain class of elements are not ought to be translated, they can be entered here. Elements with these classes will be treated as if .they had the &lt;translate=no&gt; attribute, and will be treated as translation-invariant.
+*Ignored* *classes*: if a certain class of elements are not ought to be translated, they can be entered here. Elements with these classes will be treated as if they had the `<translate=no>` attribute, and will be treated as translation-invariant.
 
 *Ignored IDs*: similar to the “Ignored classes” option, this allows the treating of specific elements as translation-invariant, this time through HTML IDs.
 
@@ -41,41 +38,47 @@ On request, it is also possible to activate an HTML parser for certain attribute
 
 These features are small alterations to the by-and-large operation of the Proxy Application. Generally, activating them is not necessary for translation, but in some cases, strange server behavior or page structure may necessitate their use. They can be triggered on and off at will.
 
-*Retaining original* DOCTYPE*-s*: by default, the Proxy Application generates an HTML5 standards-compliant file to send to the client. If, for some reason, this causes problems due to the site relying on HTML4 standards for operation, some of which may be deprecated by HTML5, enabling this option will cause the Proxy Application to retain the original DOCTYPE declaration of the source page.
+*Retaining original* `DOCTYPE`s: by default, the Proxy Application generates an HTML5 standards-compliant file to send to the client. If, for some reason, this causes problems due to the site relying on HTML4 standards for operation, some of which may be deprecated by HTML5, enabling this option will cause the Proxy Application to retain the original DOCTYPE declaration of the source page.
 
-*Determine document type by* GET *instead of* HEAD: some servers may return different responses to the HEAD request we use to determine document type than the GET request used to download content. Enabling this option forces the Proxy Application to use GET requests for all operations, getting the correct content type from the server (as far as server-side configurations will allow).
+*Determine document type by* `GET` *instead of* HEAD: some servers may return different responses to the HEAD request we use to determine document type than the GET request used to download content. Enabling this option forces the Proxy Application to use GET requests for all operations, getting the correct content type from the server (as far as server-side configurations will allow).
 
 *Detect JavaScript content type*: JavaScript may not be explicitly declared as such on the server, being sent to the client with misleading content types. This causes the Proxy Application to mis-identify such streams and not offer operations reserved for JS files. Enabling this option will force a deep check on each file sent to the client, to determine if they are indeed JavaScript code, regardless of their declared content type.
 
-*Download images through the proxy*: this will instruct the Proxy Application to attempt to map all &lt;img src&gt; attributes to the proxied domain. This is especially useful if the images are served only after authentication.
+*Download images through the proxy*: this will instruct the Proxy Application to attempt to map all `<img src>` attributes to the proxied domain. This is especially useful if the images are served only after authentication.
 
 *Attempt to place tags according to punctuation when using TM-based pre-translation*: if using a TM-based pre-translation, the Proxy Application may encounter segments where it cannot replace the XLIFF tags automatically, due to overly large differences between the contexts (possibly because of a changed site). If this option is enabled, the translator will try to replace the XLIFF tags according to their positions relative to punctuation marks in the segment. If successful, the TM entry’s confidence score will be increased by 0.1.
 
 *Translate excluded pages when viewing them in Preview mode (but still not in live serving mode)*: at times, it may be necessary to view excluded pages as if they were translated, in order to assess their layout, without actually making them available on the live site. Enabling this option allows just that, by propagating translations to the excluded pages if viewed in Preview mode, but keeping them untranslated in Live serving mode.
 
-*Translate* javascript: *attribute*: the Proxy Application is capable of extracting and translating code from the onclick attribute of elements. This feature may be used when a site uses this attribute to store translatable content inlined into the attribute and requires this content to be translated. Currently we only process the onclick event’s contents, all other events in the javascript attribute will be ignored.
+*Translate* `javascript:` *attribute*: the Proxy Application is capable of extracting and translating code from the onclick attribute of elements. This feature may be used when a site uses this attribute to store translatable content inlined into the attribute and requires this content to be translated. Currently we only process the onclick event’s contents, all other events in the javascript attribute will be ignored.
 
-*Detect and handle JSON-in-string responses, like* "{\\"ResponseCode\\":\\"BadRequest\\"}*"*: string-escaped JSON-format responses can be handled by activating this tweak. If active, the Proxy Application will first attempt to string-unescape the response before passing it to the JSON parser, in order to recreate its base form.
+*Detect and handle JSON-in-string responses, like* `"{\\"ResponseCode\\":\\"BadRequest\\"}`: string-escaped JSON-format responses can be handled by activating this tweak. If active, the Proxy Application will first attempt to string-unescape the response before passing it to the JSON parser, in order to recreate its base form.
 
-*Make content in* &lt;script type="text/html"&gt;&lt;/script&gt; *translatable as a whole (don't try to parse it as HTML)*: script blocks may contain template data requiring translation, which is often signified by the text/html content type (instead of the more usual application major type). In such cases, HTML parsing can be undesirable, and can be bypassed by activating this option.
+*Make content in* `<script type="text/html"></script>` *translatable as a whole (don't try to parse it as HTML)*: script blocks may contain template data requiring translation, which is often signified by the text/html content type (instead of the more usual application major type). In such cases, HTML parsing can be undesirable, and can be bypassed by activating this option.
 
-*Send a canonical link http header pointing to the original page on externalized pages*: the Proxy Application can insert a Link header into externalized pages, in order to avoid the SEO penalty associated with duplicate content. This header will point to the original address, and have rel=Canonical added, to designate the relationship.
+*Send a canonical link http header pointing to the original page on externalized pages*: the Proxy Application can insert a Link header into externalized pages, in order to avoid the SEO penalty associated with duplicate content. This header will point to the original address, and have `rel=Canonical` added, to designate the relationship.
 
 ### Trigger classes
 
-Easyling has a number of special classes, in addition to the user-specified *Ignore class*es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
+Easyling has a number of special classes, in addition to the user-specified *Ignore class* es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------
-  Class                 Applicable to      Effect
-  --------------------- ------------------ --------------------------------------------------------------------------------------------------------
-  “\_\_ptNoRemap”       &lt;a href&gt;     Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs
-
-  “EL\_swap”            Any HTML element   Affected elements are made available as raw HTML on the Workbench, making the source code editable.
-
-  “\_\_ptNoTranslate”                      Affected elements are hidden from the Workbench, making them untranslatable.
-                                           
-  “EL\_hide”                               
-  -------------------------------------------------------------------------------------------------------------------------------------------------
+<table>
+  <tr>
+    <td>Class</td><td>Applicable to</td><td>Effect</td>
+  </tr>
+  <tr>
+    <td>`__ptNoRemap`</td><td>`a href`</td><td>Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs.</td>
+  </tr>
+  <tr>
+    <td>`EL_swap`</td><td>Any HTML element</td><td>Affected elements are made available as raw HTML on the Workbench, making the source code editable.</td>
+  </tr>
+  <tr>
+    <td>`__ptNoTranslate`</td><td>Any HTML element</td><td>Affected elements are hidden from the Workbench, making them untranslatable.</td>
+  </tr>
+  <tr>
+    <td>`EL_hide`</td><td>Any HTML element</td><td>Affected elements are hidden from the Workbench, making them untranslatable.</td>
+  </tr>
+</table>
 
 ### Manual Publishing
 
