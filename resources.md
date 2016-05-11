@@ -1,9 +1,7 @@
-Resources
----------
+# Resources
 
 Easyling is also capable of localizing binary resources (images, CSS and JS files, PDFs, etc.) found on pages. Such resources are identified during content extraction (any file that is not HTML by content will be treated as a resource), and are placed into the Resources menu under Content. Here they can be selected for replacement, with the localized version uploaded by language.
 
 Additionally, .js files may be added to the translatable pages list from here. This enables the localization of JavaScripts. In order to take advantage of this feature, the file must first be selected for placing into the page list, after which one or more search terms must be entered in the Advanced settings menu. These search terms restrict the Proxy Application to extracting certain variable names during the subsequent content extraction scan. After this, the .js file will be made available as a translatable page, with the variable values being entered into the translation memory. These values can be replaced like any translatable text, after which the file is recompiled in real-time with the new values, and loaded along with the page.
 
 The feature depends heavily on the JavaScript being structured properly and having properly named variables and data structures which can be interpreted and whose values can be replaced to achieve changes in the loaded page. Also, careless modification of the variable values can have unknown consequences on the page’s operation and may cause the site to stop working altogether if a vital value is modified improperly.
-

@@ -1,5 +1,4 @@
-Page modifiers
---------------
+# Page modifiers
 
 Due to the way the Proxy Application operates, it becomes fairly easy to modify the pages as they are being served. Because the datastream must pass through the proxy to have the translation embedded, the Proxy Application can insert JavaScript modifiers, modify style sheets, and even embed whole new pages. These features can be found under the Page Modifiers menu.
 
@@ -8,4 +7,3 @@ CSS Editor: the Proxy Application can be used to insert locale-specific CSS rule
 JavaScript Editor: the JavaScript edited here is inserted into the &lt;head&gt; element of every page being served through the Proxy Application. By default, it does not replace any previously present &lt;script&gt; elements, being inserted as its own element, but can be used to modify the page behavior in many ways.
 
 Page Replacement: the Proxy Application can create a “virtual” page in the site or override an existing one with custom code. The new code can be entered in a fully featured HTML editor. After saving, the new page will appear in the Pages list, ready for translation, with the corresponding translation memory entries already created.
-

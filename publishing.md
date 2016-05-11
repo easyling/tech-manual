@@ -1,7 +1,5 @@
-Publishing
-----------
+# Publishing
 
 To be able to serve the translations, the Proxy Application needs the serving domain mapped into the Google AppEngine system. Due to Google’s update of their domain mapping architecture, it is now possible to push domains into the system by the simple insertion of three CNAME records into the DNS settings for that given domain.
 
 When publishing the translated site, it is highly recommended to have the domain provider/registrar’s control panel already open, and the DNS settings loaded up. In the Publish Website menu, after selecting the language to be published, and entering the desired serving domain, the key-value pairs in the table below the inputs will change accordingly. These values need to be entered into the DNS settings for the domain, after which propagation may take up to 24 hours, depending on the domain provider’s configuration. Once the new records have propagated (after a recommended wait of 24 hours), pressing the “Verify” button will query the appropriate addresses and check the returned DNS records. If they match the generated values, the Proxy Application sets the appropriate flag on the project, publishing it instantly.
-

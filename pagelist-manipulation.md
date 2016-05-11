@@ -1,5 +1,4 @@
-URL List manipulation
----------------------
+# URL List manipulation
 
 By default, the Proxy Application crawls every single URL in the target domain. For certain sites, this can mean tens of thousands of individual pages if the crawler is not restricted by page number. To avoid premature depletion of quotas, a path restriction system was implemented, allowing users to limit the crawler to certain paths on the site.
 
@@ -20,4 +19,3 @@ The path prefixes can be entered after opening the Rules editor. Prefixes must b
 It is also possible to force a set of pages into the Proxy Application’s scope, by using the appropriate function in the page list. Depending on the list is called from, the resulting dialog will either only discover the URLs pasted, or it will extract content right away and process it for translation.
 
 The same dialog can be used to crawl only the publicly accessible parts of the site by giving the Proxy Application the link to the site’s sitemap.xml[^1] file. Once the link is entered, the Proxy Application will parse the XML, and crawl the site accordingly, making sure that only the publicly accessible pages are crawled and extracted.
-

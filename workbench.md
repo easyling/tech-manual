@@ -1,5 +1,4 @@
-The Workbench
--------------
+# The Workbench
 
 The Workbench is the online editing view of the Proxy Application. It can be used to edit segments, as well as to execute mass operations on large numbers of segments during the proofreading and the publishing phases. The main view of the Workbench is the List View, a simple two-up listing of all the content on the page, the secondary is the Highlight View, which renders the page as-is and allows in-context editing of its contents
 
@@ -40,4 +39,3 @@ The Highlight View is the secondary view mode of the Workbench. It renders the p
 Some sites may interfere with the Highlight View’s operation via their internal JavaScript and render it inoperable. In some cases, it is possible to inject custom JavaScript into the page to override any defense mechanisms that may be attempting to redirect the page or hide its contents, in other cases, it may take prohibitive amounts of time and resources to achieve this.
 
 Regardless of the Highlight View’s state, the list view, as a separate component, remains operational in all cases.
-
