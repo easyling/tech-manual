@@ -62,6 +62,9 @@ These features are small alterations to the by-and-large operation of the Proxy 
 
 Translation Proxy has a number of special classes, in addition to the user-specified *Ignore class* es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
 
+| Class | Applicable To | Effect |
+| ----- | ------------- | ------ |
+| `__ptNoRemap` | `a href` | Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs. |
 <table>
   <tr>
     <td>Class</td><td>Applicable to</td><td>Effect</td>
