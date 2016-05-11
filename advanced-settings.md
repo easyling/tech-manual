@@ -65,6 +65,7 @@ Translation Proxy has a number of special classes, in addition to the user-speci
 | Class | Applicable To | Effect |
 | ----- | ------------- | ------ |
 | `__ptNoRemap` | `a href` | Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs. |
+
 <table>
   <tr>
     <td>Class</td><td>Applicable to</td><td>Effect</td>
