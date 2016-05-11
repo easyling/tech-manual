@@ -1,6 +1,6 @@
 # Caching
 
-Easyling operates several caching mechanisms, saving either the source or the target content. All of these are tied to individual project settings, and are not active by default.
+The Translation Proxy operates several caching mechanisms, saving either the source or the target content. All of these are tied to individual project settings, and are not active by default.
 
 ## Basic separation
 

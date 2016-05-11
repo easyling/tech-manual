@@ -1,6 +1,6 @@
 # Collaboration
 
-Easyling offers a multiuser environment for editing your translations. Thanks to Google’s infrastructure, any number of users can work on a single project simultaneously. These users can be assigned specific roles, and with these roles, certain powers that limit their access to the Proxy Application.
+The Translation Proxy offers a multiuser environment for editing your translations. Thanks to Google’s infrastructure, any number of users can work on a single project simultaneously. These users can be assigned specific roles, and with these roles, certain powers that limit their access to the Proxy Application.
 
 The translation workflow in the Proxy Application is split into a maximum of four steps:
 - Translation: marked by a `T` and the color yellow

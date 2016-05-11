@@ -1,6 +1,6 @@
 # Advanced capabilities
 
-Easyling offers an ever-expanding host of advanced features with far-reaching impacts.
+The Translation Proxy offers an ever-expanding host of advanced features with far-reaching impacts.
 
 *Increased Usage Alarm*: the Proxy Application can be configured to send out an email alert if increased resource usage is detected on a project. Alert thresholds can be configured on a per-project basis, with respect to pageviews per second, added source words per second, or translated words per second, or any combination of these. Notification emails come with a cooldown timer: after an alert condition is triggered, no new alerts are sent for the specified time (defaults to 60 minutes, can be configured by the project owners, minimum of 15 minutes).
 
@@ -60,7 +60,7 @@ These features are small alterations to the by-and-large operation of the Proxy 
 
 ### Trigger classes
 
-Easyling has a number of special classes, in addition to the user-specified *Ignore class* es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
+Translation Proxy has a number of special classes, in addition to the user-specified *Ignore class* es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
 
 <table>
   <tr>
