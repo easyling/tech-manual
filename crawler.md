@@ -9,10 +9,6 @@ The crawler operates on an unprocessed DOM, generated from the HTML source. Java
 Requests are sent via Google's URLFetch service. Therefore, requests will come from Google-controlled IPs (unless specific configuration is applied). The user-agent will always contain the string "Appengine Google" due to Google's enforcement of this header - this may cause undesired behavior in certain caching/access-control systems, such as WPEngine's anti-bot algorithm.  
 If required, all proxy requests (crawler and page serving) may be routed through a fixed IP address outside of Google's IP range. This may be used to circumvent access control restrictions.
 
-## Request Life Cycle
-
-{content here}
-
 ## Modes of operation
 
 The crawler distinguishes two main modes of operation, based on whether content is being extracted from the target site and stored as `SourceEntry` entities: if content is not being stored, the crawl is deemed a "dry" crawl (named Discovery on the UI), otherwise, it is "non-dry" (named Content Scan).  
