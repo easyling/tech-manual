@@ -62,15 +62,14 @@ These features are small alterations to the by-and-large operation of the Proxy 
 
 Translation Proxy has a number of special classes, in addition to the user-specified *Ignore class* es. These must be added to the source content by the client, and triggers special behavior in the proxy either when the content is extracted or during the actual proxying process.
 
-+---------------+---------------+--------------------+
-| Fruit         | Price         | Advantages         |
-+===============+===============+====================+
-| Bananas       | $1.34         | - built-in wrapper |
-|               |               | - bright color     |
-+---------------+---------------+--------------------+
-| Oranges       | $2.10         | - cures scurvy     |
-|               |               | - tasty            |
-+---------------+---------------+--------------------+
+=====  =====  =======
+A      B      A and B
+=====  =====  =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+=====  =====  =======
 
 <table>
   <tr>
