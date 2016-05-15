@@ -8,3 +8,4 @@ Easyling Technology Manual
     caching
     content-handling
     memories
+    modifiers
