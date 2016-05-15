@@ -7,3 +7,4 @@ Easyling Technology Manual
     request-handling
     caching
     content-handling
+    memories
