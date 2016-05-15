@@ -3,6 +3,7 @@ Easyling Technology Manual
 ===========================
 
 .. toctree::
-    :glob:
-
-    *
+    architecture
+    request-handling
+    caching
+    content-handling
