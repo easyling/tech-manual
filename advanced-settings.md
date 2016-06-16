@@ -67,10 +67,10 @@ Translation Proxy has a number of special classes, in addition to the user-speci
     <td>Class</td><td>Applicable to</td><td>Effect</td>
   </tr>
   <tr>
-    <td><pre>__ptNoRemap</pre></td><td>`a href`</td><td>Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs.</td>
+    <td><pre>__ptNoRemap</pre></td><td><pre>a href</pre></td><td>Affected links are left untouched by the proxy, their destinations are not remapped into relative URLs.</td>
   </tr>
   <tr>
-    <td><pre>EL_swap</pre></td><td>Any HTML element</td><td>Affected elements are made available as raw HTML on the Workbench, making the source code editable.</td>
+    <td><pre>EL_swap<br/>__ptSwap</pre></td><td>Any HTML element</td><td>Affected elements are made available as raw HTML on the Workbench, making the source code editable.</td>
   </tr>
   <tr>
     <td><pre>__ptNoTranslate</pre></td><td>Any HTML element</td><td>Affected elements are hidden from the Workbench, making them untranslatable.</td>
