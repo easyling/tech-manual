@@ -1,5 +1,5 @@
 ===========================
-Easyling Technology Manual
+Technical Reference
 ===========================
 
 .. toctree::
