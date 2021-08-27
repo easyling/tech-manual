@@ -32,13 +32,14 @@ In order to provide a seamless user experience, _CREST_ exposes a number of even
 
 ```html
 <script type="application/javascript">
-        document.addEventListener("crestDocumentTranslationStart", () => console.log("Document translation started"));
-        document.addEventListener("crestDocumentTranslationEnd", () => console.log("Document translation ended"));
-        document.addEventListener("crestMutationTranslationStart", (e) => console.log(`Mutation translation started. Mutated records: ${e.detail.targets}`)); // e.detail.targets contains the array of MutationRecord objects that are being processed in the current run. For more information, see https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord
-        document.addEventListener("crestMutationTranslationEnd", () => console.log("Mutation translation ended"));
-        document.addEventListener("crestDictionaryLoadingStart", () => console.log("Dictionary download started"));
-        document.addEventListener("crestDictionaryLoadingEnd", () => console.log("Dictionary download ended"));
-
-        console.log("Event listeners ready...");
-    </script>
+    document.addEventListener("crestDocumentTranslationStart", () => console.log("Document translation started"));
+    document.addEventListener("crestDocumentTranslationEnd", () => console.log("Document translation ended"));
+    // e.detail.targets contains the array of MutationRecord objects that are being processed in the current run. For more information, see https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord
+    document.addEventListener("crestMutationTranslationStart", (e) => console.log(`Mutation translation started. Mutated records: ${e.detail.targets}`));
+    document.addEventListener("crestMutationTranslationEnd", () => console.log("Mutation translation ended"));
+    document.addEventListener("crestDictionaryLoadingStart", () => console.log("Dictionary download started"));
+    document.addEventListener("crestDictionaryLoadingEnd", () => console.log("Dictionary download ended"));
+    
+    console.log("Event listeners ready...");
+</script>
 ```
