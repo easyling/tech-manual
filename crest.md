@@ -4,7 +4,7 @@
 The _Client-Side Translator_, codenamed _CREST_, is an alternative publishing mode. Instead of operating in proxy mode, the system generates a Javascript stub that needs to be referenced in the site, and it will translate the page in real time using a dictionary downloaded from the cloud service. Language choice is persisted in the browser's _Local Storage_, enabling automatic translation of any page in the site instantly on landing.
 
 ### Setup
-Content is collected and translated the same way as normal. Once publishing is needed, content is exported by selecting the _Client side translation_ file format, then publishing the latest export (or the one selected for production) from the _Previous Exports_ screen and clicking the context menu.
+Content is collected and translated the same way as normal. Once publishing is needed, content is exported by selecting the _Client-side translation_ file format, then publishing the latest export (or the one selected for production) from the _Previous Exports_ screen and clicking the context menu.
 
 The translation loader script can be inserted with a one-liner script element, which is available from the _Global Settings_ screen of the _Publish_ section in the sidebar. The website owner needs to insert this script element into pages requiring translation.  
 Once complete, the translations can be requested by adding a query parameter to the URL, with the name `__ptLanguage` and the chosen locale as the value (for example `https://example.com/path/to/page?__ptLanguage=ja-JP`).
@@ -18,7 +18,7 @@ Language selection is possible via the sidebar inserted on the right by default,
 On selecting a language, the loader script will insert a new script element referencing the exported dictionary. This download the translations necessary for display and the translator algorithm that processes the available DOM to replace content with the available translations.  
 The translator will also attach a `MutationObserver` to the document being displayed that allows it to react to DOM manipulation or newly-appearing elements in real time.
 
-###Interop
+### Interop
 In order to provide a seamless user experience, _CREST_ exposes a number of events at key points in the process that allow the containing page to react to the translation process and take action to enhance the experience. The following events are dispatched at various points:
 
 - `crestDictionaryLoadingStart`: Dispatched when a language is selected and download of the corresponding dictionary begins. As the dictionary can be sizeable, this event can be used to display a notification to the visitor advising them that the language is about to change.
