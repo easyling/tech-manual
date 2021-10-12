@@ -6,7 +6,10 @@ The _Client-Side Translator_, codenamed _CREST_, is an alternative publishing mo
 ### Setup
 Content is collected and translated the same way as normal. Once publishing is needed, content is exported by selecting the _Client-side translation_ file format, then publishing the latest export (or the one selected for production) from the _Previous Exports_ screen and clicking the context menu.
 
-The translation loader script can be inserted with a one-liner script element, which is available from the _Global Settings_ screen of the _Publish_ section in the sidebar. The website owner needs to insert this script element into pages requiring translation.  
+The translation loader script can be inserted with a one-liner script element, which is available from the _Global Settings_ screen of the _Publish_ section in the sidebar. The website owner needs to insert this script element into pages requiring translation. 
+
+![Copy from the Dashboard and paste into the head](./img/crest.png)
+
 Once complete, the translations can be requested by adding a query parameter to the URL, with the name `__ptLanguage` and the chosen locale as the value (for example `https://example.com/path/to/page?__ptLanguage=ja-JP`).
 
 ## Integrators' Guide
@@ -14,15 +17,15 @@ Once complete, the translations can be requested by adding a query parameter to 
 _CREST_ is controlled by the loader script, inserted into every page requiring translation. The script element should be inserted as high in the `head` as possible in order to begin translation at the earliest possible point.  
 The loader script has a number of query parameters that may be used to manipulate its operation. Any number of these can be combined to customize the loader's behavior from the default settings (existence of said defaults also means _none_ of these parameters are mandatory to supply).
 - `languageParameter`: This parameter can be used to change the language selector key from its default of `__ptLanguage`.
-- `storageParameter`: This parameter can be used to change the LOcalSTorage key used to store a previous selection from its default of `ptLanguage`.
-- `noXDefault`: if set to `true`, suppress placing an `x-default` link element in the `head` if a translated langauge is loaded. This may have SEO implications!
+- `storageParameter`: This parameter can be used to change the LocalStorage key used to store a previous selection from its default of `ptLanguage`.
+- `noXDefault`: if set to `true`, suppress placing an `x-default` link element in the `head` if a translated language is loaded. This may have SEO implications!
 - `rewriteUrl`: if set to `true`, use `history.replaceState` to rewrite the URL shown to the user so that it always displays the selected language.
 - `scriptUrlIsBase`: if set to `true`, the loader will search for the translator script based on its own URL. **CAUTION: This is not supported under Internet Explorer!**
 - `disableSelector`: if set to `true`, the stub will not inject its own language selector in the sidebar. In this case, it is up to the website to provide links to the various language versions.
 
 Language selection is possible via the sidebar inserted on the right by default, or custom `a` elements that manipulate the value of the `__ptLanguage` query parameter. Note that once a language is selected, the choice is persisted into the browser _Local Storage_, so further links need not be annotated with the query to maintain translation.
 
-On selecting a language, the loader script will insert a new script element referencing the exported dictionary. This download the translations necessary for display and the translator algorithm that processes the available DOM to replace content with the available translations.  
+On selecting a language, the loader script will insert a new script element referencing the exported dictionary. It downloads the translations necessary for display and the translator algorithm that processes the available DOM to replace content with the available translations.  
 The translator will also attach a `MutationObserver` to the document being displayed that allows it to react to DOM manipulation or newly-appearing elements in real time.
 
 ### Interop
