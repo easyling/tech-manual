@@ -79,10 +79,13 @@ The sidebar language selector is the easiest to integrate. It is part of the loa
 For websites where more customisation options are required, the dropdown language selector is available. Setup is slightly more involved:
 
 1. Create and empty `span` or `div` with the class `el-dropdown` (or the one configured on the Dashboard).
-2. Add the translator stub with the `?disableSelector` query set to `true` or edit the selector to include this query.
-3. On the Dashboard, under _Language selector_, select JavaScript publishing and Dropdown. Make sure to save the settings. Alternatively, you can copy the embed code available under _Language selector_ and insert it just like you inserted the stub.
+2. Add the translator stub with the `?disableSelector` query set to `true` or edit the selector to include this query. While technically not _required_, this step ensures that you do not have two selectors on the website. Without the query, the stub will insert the sidebar language selector too.
+3. On the Dashboard, under _Language selector_, select JavaScript publishing and Dropdown. Make sure to save the settings.  
+Alternatively, you can copy the embed code available under _Language selector_ on the Dashboard and insert it just like you inserted the stub. It looks something like this:
 
-This selector has two main versions. V1 shows the currently selected language and the rest of them are available through a drop-down selector. V2 on the other hand is more compact by default. It shows a globe icon (🌐), then the language choice is available via a more modern dropdown design.
+```<script type="text/javascript" src="https://whitelabel.example.com/js/webtranslate/languageDropdown.js?code=r2d4ct3d&v=2"></script>```
+
+This selector has two main versions. You can select the one you prefer on the Dashboard. V1 shows the currently selected language and the rest of them are available through a drop-down selector. V2 on the other hand is more compact by default. It shows a globe icon (🌐), then the language choice is available via a more modern dropdown design.
 
 V1 offers the following options:
 
