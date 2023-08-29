@@ -83,7 +83,9 @@ For websites where more customisation options are required, the dropdown languag
 3. On the Dashboard, under _Language selector_, select JavaScript publishing and Dropdown. Make sure to save the settings.  
 Alternatively, you can copy the embed code available under _Language selector_ on the Dashboard and insert it just like you inserted the stub. It looks something like this:
 
-```<script type="text/javascript" src="https://whitelabel.example.com/js/webtranslate/languageDropdown.js?code=r2d4ct3d&v=2"></script>```
+```html
+<script type="text/javascript" src="https://whitelabel.example.com/js/webtranslate/languageDropdown.js?code=r2d4ct3d&v=2"></script>
+```
 
 This selector has two main versions. You can select the one you prefer on the Dashboard. V1 shows the currently selected language and the rest of them are available through a drop-down selector. V2 on the other hand is more compact by default. It shows a globe icon (🌐), then the language choice is available via a more modern dropdown design.
 
