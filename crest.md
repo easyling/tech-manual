@@ -37,6 +37,8 @@ The translator will also attach a `MutationObserver` to the document being displ
 
 ### Interop
 
+#### Events
+
 In order to provide a seamless user experience, _Crest_ exposes a number of events at key points in the process that allow the containing page to react to the translation process and take action to enhance the experience. The following events are dispatched at various points:
 
 - `crestDictionaryLoadingStart`: Dispatched when a language is selected and download of the corresponding dictionary begins. As the dictionary can be sizeable, this event can be used to display a notification to the visitor advising them that the language is about to change.
@@ -46,7 +48,9 @@ In order to provide a seamless user experience, _Crest_ exposes a number of even
 - `crestMutationTranslationStart`: Dispatched when a mutation of the DOM is detected by the attached observer and translation of the new/changed elements begins. This event is unique in that it includes a payload, an array of the `MutationRecord`s that are being processed. These include information about the element name, DOM path, and other data that may be used by the page to react to changes.
 - `crestMutationTranslationEnd`: Dispatched when the mutation observer completes its run and designates all mutated elements translated. If a notification was displayed on the preceding event, it should be removed now.
 
-#### Example
+In addition, the `crestStub` event can be used to detect changes in the loader configuration in real-time.
+
+##### Example
 
 ```html
 <script type="application/javascript">
@@ -57,6 +61,12 @@ In order to provide a seamless user experience, _Crest_ exposes a number of even
     document.addEventListener("crestMutationTranslationEnd", () => console.log("Mutation translation ended"));
     document.addEventListener("crestDictionaryLoadingStart", () => console.log("Dictionary download started"));
     document.addEventListener("crestDictionaryLoadingEnd", () => console.log("Dictionary download ended"));
+
+    document.addEventListener("crestStub", (event) => {
+        let changes = event.detail.changes; // List of changes in the state.
+        let selectedLanguage = event.detail.state.selectedLanguage; // The currently selected language.
+    });
+
     
     console.log("Event listeners ready...");
 </script>
@@ -94,4 +104,62 @@ V1 offers the following options:
 - The flags of each language.
 - The name of the language(s) as displayed when hovered.
 
-additionally with V2, you can specify whether the design should incorporate the flags of the languages.
+Additionally with V2, you can specify whether the design should incorporate the flags of the languages.
+
+### Custom Dropdown
+
+The loader exposes its current configuration in the local window, by setting a *read-only* copy of it as `window.crestStub`. Developers can use it to generate custom language selectors and get vital information about the current state of the translation engine.
+
+#### Structure:
+
+- **config**: Contains configurations for Crest's operation.
+
+  - **crestConfig**: Specific configurations for Crest's behavior.
+  
+    - `passive`: (Boolean) Determines if Crest operates in a passive mode.
+    - `scriptInjections`: (Array) Scripts to be injected dynamically.
+    - `languageSelectedByPath`: (Boolean) Defines if language should be determined by the URL path.
+    - `selectorDisabled`: (Boolean) Determines if the language selector is disabled.
+
+  - **restrictions**: Specifies restrictions on paths and translations.
+
+    - `externalizedPathPrefixes`: (Array) Paths that should be externalized.
+    - `pathPrefixMask`: (Array) Masks for path prefixes.
+    - `externalizedQueryGlobs`: (Array) Glob patterns for externalizing query parameters.
+    - `translationPathPrefixes`: (Array) Prefixes for translated paths.
+
+  - **sheet**: (String) URL of the icon sheet used for flags.
+  - **flagWidth**: (Number) Width of an individual flag icon.
+  - **flagHeight**: (Number) Height of an individual flag icon.
+  - **flagPixelRatio**: (Number) Pixel ratio for the flag icons.
+  - **atlasWidth**: (Number) Total width of the flag icon atlas.
+  - **languageParameter**: (String) The query parameter used to indicate language selection.
+  - **appendTo**: (String) DOM selector where the language selector should be appended.
+  - **deployed**: (Boolean) Indicates if the translation has been deployed.
+  - **storageKey**: (String) Key used for storing selected language in local storage.
+  - **disableSelector**: (Boolean) Determines if the language selector is disabled.
+
+- **languages**: (Array) Contains a list of available languages for translation.
+
+  - **country**: (String) The country for the specific language.
+  - **language**: (String) The name of the language.
+  - **direction**: (String) Text direction (`ltr` or `rtl`).
+  - **deployPath**: (String) URL where the translated version is deployed.
+  - **flag**: (Object) Contains the x and y positions of the flag in the icon sheet.
+  - **targetLanguage**: (String) The target language code.
+  - **uri**: (String) URL for the translation script of the respective language.
+  - **displayName**: (String) Display name for the language.
+  - **published**: (Boolean) Indicates if the language translation is published.
+
+#### Usage:
+
+Developers can use the `window.crestStub` object to create custom language selectors. By iterating over the `languages` array, one can generate language options dynamically. The current selected language can be obtained from the `config.crestConfig.languageSelectedByPath` or by checking the URL (when `languageSelectedByPath` is true). 
+
+Example:
+
+```javascript
+const languages = window.crestStub.languages;
+languages.forEach(lang => {
+  console.log(lang.displayName); // Output the display name of each language
+});
+```
