@@ -37,6 +37,8 @@ The translator will also attach a `MutationObserver` to the document being displ
 
 ### Interop
 
+#### Events
+
 In order to provide a seamless user experience, _Crest_ exposes a number of events at key points in the process that allow the containing page to react to the translation process and take action to enhance the experience. The following events are dispatched at various points:
 
 - `crestDictionaryLoadingStart`: Dispatched when a language is selected and download of the corresponding dictionary begins. As the dictionary can be sizeable, this event can be used to display a notification to the visitor advising them that the language is about to change.
@@ -46,7 +48,9 @@ In order to provide a seamless user experience, _Crest_ exposes a number of even
 - `crestMutationTranslationStart`: Dispatched when a mutation of the DOM is detected by the attached observer and translation of the new/changed elements begins. This event is unique in that it includes a payload, an array of the `MutationRecord`s that are being processed. These include information about the element name, DOM path, and other data that may be used by the page to react to changes.
 - `crestMutationTranslationEnd`: Dispatched when the mutation observer completes its run and designates all mutated elements translated. If a notification was displayed on the preceding event, it should be removed now.
 
-#### Example
+In addition, the `crestStub` event can be used to detect changes in the loader configuration in real-time.
+
+##### Example
 
 ```html
 <script type="application/javascript">
@@ -57,6 +61,12 @@ In order to provide a seamless user experience, _Crest_ exposes a number of even
     document.addEventListener("crestMutationTranslationEnd", () => console.log("Mutation translation ended"));
     document.addEventListener("crestDictionaryLoadingStart", () => console.log("Dictionary download started"));
     document.addEventListener("crestDictionaryLoadingEnd", () => console.log("Dictionary download ended"));
+
+    document.addEventListener("crestStub", (event) => {
+        let changes = event.detail.changes; // List of changes in the state.
+        let selectedLanguage = event.detail.state.selectedLanguage; // The currently selected language.
+    });
+
     
     console.log("Event listeners ready...");
 </script>
