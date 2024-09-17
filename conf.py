@@ -3,7 +3,9 @@
 
 from recommonmark.parser import CommonMarkParser
 
-extensions = []
+extensions = [
+    "sphinx_build_compatibility.extension",
+]
 templates_path = ['/home/docs/checkouts/readthedocs.org/readthedocs/templates/sphinx', 'templates', '_templates', '.templates']
 source_suffix = ['.rst', '.md']		
 source_parsers = {		
