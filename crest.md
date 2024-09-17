@@ -29,6 +29,8 @@ The loader script has a number of query parameters that may be used to manipulat
 - `rewriteUrl`: if set to `true`, use `history.replaceState` to rewrite the URL shown to the user so that it always displays the selected language.
 - `scriptUrlIsBase`: if set to `true`, the loader will search for the translator script based on its own URL. **CAUTION: This is not supported under Internet Explorer!**
 - `disableSelector`: if set to `true`, the stub will not inject its own language selector in the sidebar. In this case, it is up to the website to provide links to the various language versions.
+- `manuallyStarted`: if enabled, the stub will load the appropriate translation engine, but will hold off on the _actual translation_ until the page calls `window.crestTranslator.start()` - see the events below for synchronizing this process!
+- `passive`: if enabled, this option turns over full control of the translation process to the page - the loader will expose its API, but will not start any manipulation processes until the appropriate methods are called. See below for an example!
 
 Language selection is possible via the sidebar inserted on the right by default, or custom `a` elements that manipulate the value of the `__ptLanguage` query parameter. Note that once a language is selected, the choice is persisted into the browser _Local Storage_, so further links need not be annotated with the query to maintain translation.
 
@@ -41,6 +43,7 @@ The translator will also attach a `MutationObserver` to the document being displ
 
 In order to provide a seamless user experience, _Crest_ exposes a number of events at key points in the process that allow the containing page to react to the translation process and take action to enhance the experience. The following events are dispatched at various points:
 
+- `crestTranslatorAvailable`: This event is dispatched _only_ if manual translation start is enabled. It signals that the translation engine is ready and it's now safe to call `window.crestTranslator.start()` to begin the translation process. Note that `window.crestTranslator` is _only_ available if `manuallyStarted` has been set!
 - `crestDictionaryLoadingStart`: Dispatched when a language is selected and download of the corresponding dictionary begins. As the dictionary can be sizeable, this event can be used to display a notification to the visitor advising them that the language is about to change.
 - `crestDictionaryLoadingEnd`: Dispatched on completion of the dictionary download. Firing this event means translations are available, and they will be applied to the DOM momentarily. If a notification was displayed on download start, it should be removed on this event.
 - `crestDocumentTranslationStart`: Dispatched when the initial translation of the document begins. Firing this event means translations are currently being applied to the entire page, and the displayed language is about to change. In case translation takes significant time, the user may benefit from an overlay or other message notifying them of the process and that the displayed language will change soon.
@@ -71,6 +74,15 @@ In addition, the `crestStub` event can be used to detect changes in the loader c
     console.log("Event listeners ready...");
 </script>
 ```
+
+#### Passive Mode
+
+In passive mode, the loader will remain mostly dormant until its API is called. The only thing it will do is to expose said API at `window.crestStub`. The API contains the following methods:
+
+- `setCurrentLanguage(string)`: when called with an appropriate locale code, such as `ja-JP` - note the capitalization! - that is enabled for the hosting project, the loader will persist this choice and load the appropriate translation engine.  
+Notably, this method also takes the _source language_ of the site, allowing the page to switch back to its original language by passing it to this method.
+- `getCurrentLanguage()`: returns the locale code of the language currently selected.
+- `languages`: contains the currently-enabled languages for the hosting project, which could be used to generate a custom language selector menu. For more information and precise structure, see below!
 
 ## Language selector
 
