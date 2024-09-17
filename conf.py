@@ -1,9 +1,8 @@
 project = u'Translation Proxy Documentation'
 copyright = u'2024'
 source_suffix = ['.rst', '.md']		
-source_parsers = {		
-            '.md': CommonMarkParser,		
-        }
+
+extensions = ["myst_parser"]
 htmlhelp_basename = 'easyling-technical-docs'
 latex_documents = [
   ('index', 'easyling-tech-manual.tex', u'Translation Proxy Online Documentation',
