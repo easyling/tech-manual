@@ -19,3 +19,5 @@ build:
 python:
   install:
   - requirements: requirements.txt
+  - method: pip
+    path: git+https://github.com/readthedocs/sphinx-build-compatibility#egg=sphinx-build-compatibility
