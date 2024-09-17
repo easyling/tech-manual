@@ -2,7 +2,6 @@ pillow
 alabaster
 sphinx
 sphinx-rtd-theme
-sphinx-build-compatibility
 readthedocs-sphinx-ext
 jinja2
 sphinxcontrib-websupport

@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 from recommonmark.parser import CommonMarkParser
@@ -28,10 +27,20 @@ latex_documents = [
 
 
 import sys
+import os
 import os.path
 from six import string_types
 
 from sphinx import version_info
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    if "html_context" not in globals():
+        html_context = {}
+    html_context["READTHEDOCS"] = True
 
 # Get suffix for proper linking to GitHub
 # This is deprecated in Sphinx 1.3+,
