@@ -126,7 +126,7 @@ The loader exposes its current configuration in the local window, by setting a *
 
 - **config**: Contains configurations for Crest's operation.
 
-  - **crestConfig**: Specific configurations for Crest's behavior.
+  - **crestConfig**: Specific configurations for Crest's behaviour.
   
     - `passive`: (Boolean) Determines if Crest operates in a passive mode.
     - `scriptInjections`: (Array) Scripts to be injected dynamically.
@@ -163,9 +163,9 @@ The loader exposes its current configuration in the local window, by setting a *
   - **displayName**: (String) Display name for the language.
   - **published**: (Boolean) Indicates if the language translation is published.
 
-#### Usage:
+#### Usage
 
-Developers can use the `window.crestStub` object to create custom language selectors. By iterating over the `languages` array, one can generate language options dynamically. The current selected language can be obtained from the `config.crestConfig.languageSelectedByPath` or by checking the URL (when `languageSelectedByPath` is true). 
+Developers can use the `window.crestStub` object to create custom language selectors. By iterating over the `languages` array, one can generate language options dynamically. The current selected language can be obtained from the `config.crestConfig.languageSelectedByPath` or by checking the URL (when `languageSelectedByPath` is true). Read the following section for further API details.
 
 Example:
 
@@ -175,3 +175,55 @@ languages.forEach(lang => {
   console.log(lang.displayName); // Output the display name of each language
 });
 ```
+
+## API
+
+The client-side translator exposes two global objects under `window`, `crestStub` and `crestConfig`. Let's check them out one-by-one.
+
+### `window.crestStub`
+
+This object contains the most important values and functions for the translation.
+
+- `config`: Read-only information about the current configuration.
+  - `appendTo`: The ID of the element where the sidebar language selector is added.
+  - `atlasWidth`: The width of the flag atlas in pixels.
+  - `crestConfig`: The translator's configuration as set on the JavaScript publishing of the Dashboard.
+    - `blockSelector`: A string representation of the options set under Selectors -> Block selector.
+    - `languageSelectedByPath`: Boolean whether Tweaks -> Select language by path is enabled.
+    - `manuallyStarted`: Boolean whether Tweaks -> Start manually is enabled.
+    - `partialUpdateDetectionEnabled`: When this is true and an element matched by the selector specified under `treatUnhandledOnChangeSelector` is changed, the translator script detects a scenario where only part of the text is changed. In this scenario, it will not try to re-translate the mixed-language text.
+    - `partialMutationAdapterEnabled`: Similar to `partialUpdateDetectionEnabled`, when such partial change is detected, the translation script will restore the source language for the part that it had translated previously so that it can finally translate the homogenous-language content. It is assumed that the newly added part is in the source language.
+    - `passive`: Boolean whether Tweaks -> Passive mode is enabled.
+    - `scriptInjections`: An array of the options set under Injection.
+    - `selectorDisabled`: Boolean whether the sidebar language selector is disabled. `false` by default to show the selector.
+  - `flagHeight`: The height of the individual flags in the atlas in pixels.
+  - `flagWidth` The width of the individual flags in the atlas in pixels.
+  - `flagPixelRatio`: The ratio of pixels in the atlas relative to their displayed size. E.g. 2 if the flags are 64px wide but they are displayed in 32px wide spaces.
+  - `languageParameter`: The query parameter used for changing the language. The default is `__ptLanguage`. This can be set under languageParameter in the Tweaks section.
+  - `restrictions`: These properties specify whether the translator should work on the given page.
+    - `externalizedPathPrefixes`: An array of strings where the path is externalised.
+    - `pathPrefixMask`: An array of strings that the translation scope is limited to. Every page outside is considered externalised.
+    - `translationPathPrefixes`: An array of strings where the translations are published in subdirectory mode.
+  - `sheet`: The URL of the flag atlas.
+  - `sourceReport`: The URL of the script used when the Report new content when the site isn't translated tweak is enabled.
+  - `storageKey`: The key to use in LocalStorage for storing the currently selected language.
+  - `visor`: Boolean stating whether the script is currently running in preview mode.
+- `getCurrentLanguage`: Returns the current language, e.g. `en-gb`.
+- `setCurrentLanguage`: Set the current language to the parameter.
+- `isPageExternalized`: Returns whether the page is externalised.
+- `languages`: An array of `Language` objects that are known on the project. This includes the source language and the target language(s). Each object contains the following:
+  - `country`: The country associated with the given language in the language of the country, e.g. _United Kingdom_.
+  - `direction`: Whether the language is left-to-right or right-to-left. Possible values are `ltr` and `rtl`.
+  - `displayName`: The full name of the language, including country in the given language, e.g. _English (United Kingdom)_.
+  - `flag`: The `x` and `y` coordinates of the flag in the atlas.
+  - `language`: The name of the language without the country in the given language, e.g. _English_.
+  - `published`: A Boolean value stating whether a JS export is available.
+  - `targetLanguage`: The (usually) four-letter locale code of the language, e.g. `en-gb`.
+  - `uri`: The URI of the translator script of the given language.
+
+### `window.crestTranslator`
+
+Note that this object is only available if it has data to display (e.g. the _Start manually_ option is enabled on the Dashboard). It exposes a field and a function:
+
+- `start()`: This function is used when the _Start manually_ option is enabled. In this scenario, use the `start()` function to start translation. It takes no parameters.
+- `sourceReporter`: This Boolean value shows whether the _Report new content when the site isn't translated_ is enabled and active.
