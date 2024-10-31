@@ -21,7 +21,7 @@ Once complete, the translations can be requested by adding a query parameter to 
 ### Elements
 
 _Crest_ is controlled by the loader script, inserted into every page requiring translation. The script element should be inserted as high in the `head` as possible in order to begin translation at the earliest possible point.  
-The loader script has a number of query parameters that may be used to manipulate its operation. Any number of these can be combined to customize the loader's behaviour from the default settings (existence of said defaults also means _none_ of these parameters are mandatory to supply).
+The loader script has a number of query parameters that may be used to manipulate its operation. Any number of these can be combined to customize the loader's behavior from the default settings (existence of said defaults also means _none_ of these parameters are mandatory to supply).
 
 - `languageParameter`: This parameter can be used to change the language selector key from its default of `__ptLanguage`.
 - `storageParameter`: This parameter can be used to change the LocalStorage key used to store a previous selection from its default of `ptLanguage`.
@@ -126,7 +126,7 @@ The loader exposes its current configuration in the local window, by setting a *
 
 - **config**: Contains configurations for Crest's operation.
 
-  - **crestConfig**: Specific configurations for Crest's behaviour.
+  - **crestConfig**: Specific configurations for Crest's behavior.
   
     - `passive`: (Boolean) Determines if Crest operates in a passive mode.
     - `scriptInjections`: (Array) Scripts to be injected dynamically.
