@@ -1,5 +1,26 @@
 # Client-Side Translator
 
+## Table of contents
+
+- [Client-Side Translator](#client-side-translator)
+  - [Table of contents](#table-of-contents)
+  - [Operations](#operations)
+    - [Overview](#overview)
+    - [Setup](#setup)
+  - [Integrators' Guide](#integrators-guide)
+    - [Elements](#elements)
+    - [Interop](#interop)
+      - [Events](#events)
+        - [Example](#example)
+      - [Passive Mode](#passive-mode)
+  - [Language selector](#language-selector)
+    - [Sidebar](#sidebar)
+    - [Dropdown](#dropdown)
+    - [Custom Dropdown](#custom-dropdown)
+  - [API](#api)
+    - [`window.crestStub`](#windowcreststub)
+    - [`window.crestTranslator`](#windowcresttranslator)
+
 ## Operations
 
 ### Overview
@@ -120,52 +141,7 @@ Additionally with V2, you can specify whether the design should incorporate the 
 
 ### Custom Dropdown
 
-The loader exposes its current configuration in the local window, by setting a *read-only* copy of it as `window.crestStub`. Developers can use it to generate custom language selectors and get vital information about the current state of the translation engine.
-
-#### Structure:
-
-- **config**: Contains configurations for Crest's operation.
-
-  - **crestConfig**: Specific configurations for Crest's behavior.
-  
-    - `passive`: (Boolean) Determines if Crest operates in a passive mode.
-    - `scriptInjections`: (Array) Scripts to be injected dynamically.
-    - `languageSelectedByPath`: (Boolean) Defines if language should be determined by the URL path.
-    - `selectorDisabled`: (Boolean) Determines if the language selector is disabled.
-
-  - **restrictions**: Specifies restrictions on paths and translations.
-
-    - `externalizedPathPrefixes`: (Array) Paths that should be externalized.
-    - `pathPrefixMask`: (Array) Masks for path prefixes.
-    - `externalizedQueryGlobs`: (Array) Glob patterns for externalizing query parameters.
-    - `translationPathPrefixes`: (Array) Prefixes for translated paths.
-
-  - **sheet**: (String) URL of the icon sheet used for flags.
-  - **flagWidth**: (Number) Width of an individual flag icon.
-  - **flagHeight**: (Number) Height of an individual flag icon.
-  - **flagPixelRatio**: (Number) Pixel ratio for the flag icons.
-  - **atlasWidth**: (Number) Total width of the flag icon atlas.
-  - **languageParameter**: (String) The query parameter used to indicate language selection.
-  - **appendTo**: (String) DOM selector where the language selector should be appended.
-  - **deployed**: (Boolean) Indicates if the translation has been deployed.
-  - **storageKey**: (String) Key used for storing selected language in local storage.
-  - **disableSelector**: (Boolean) Determines if the language selector is disabled.
-
-- **languages**: (Array) Contains a list of available languages for translation.
-
-  - **country**: (String) The country for the specific language.
-  - **language**: (String) The name of the language.
-  - **direction**: (String) Text direction (`ltr` or `rtl`).
-  - **deployPath**: (String) URL where the translated version is deployed.
-  - **flag**: (Object) Contains the x and y positions of the flag in the icon sheet.
-  - **targetLanguage**: (String) The target language code.
-  - **uri**: (String) URL for the translation script of the respective language.
-  - **displayName**: (String) Display name for the language.
-  - **published**: (Boolean) Indicates if the language translation is published.
-
-#### Usage
-
-Developers can use the `window.crestStub` object to create custom language selectors. By iterating over the `languages` array, one can generate language options dynamically. The current selected language can be obtained from the `config.crestConfig.languageSelectedByPath` or by checking the URL (when `languageSelectedByPath` is true). Read the following section for further API details.
+Developers can use the `window.crestStub` object to create custom language selectors. It is a read-only copy of the translator's current configuration. By iterating over the `languages` array, one can generate language options dynamically. The current selected language can be obtained from the `config.crestConfig.languageSelectedByPath` or by checking the URL (when `languageSelectedByPath` is true). Read the following section for further API details.
 
 Example:
 
