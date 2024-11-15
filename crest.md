@@ -196,6 +196,7 @@ This object contains the most important values and functions for the translation
     - `passive`: Boolean whether Tweaks -> Passive mode is enabled.
     - `scriptInjections`: An array of the options set under Injection.
     - `selectorDisabled`: Boolean whether the sidebar language selector is disabled. `false` by default to show the selector.
+  - `deployed`: If set to `true`, the stub is optimised for a mixed mode where translation itself is handled by the proxy. As such, it will not add the translator script.
   - `flagHeight`: The height of the individual flags in the atlas in pixels.
   - `flagWidth` The width of the individual flags in the atlas in pixels.
   - `flagPixelRatio`: The ratio of pixels in the atlas relative to their displayed size. E.g. 2 if the flags are 64px wide but they are displayed in 32px wide spaces.
